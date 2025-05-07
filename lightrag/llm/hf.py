@@ -76,7 +76,7 @@ async def hf_model_if_cache(
     input_prompt = ""
     try:
         input_prompt = hf_tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
+            messages, tokenize=False, add_generation_prompt=True, enable_thinking=True
         )
     except Exception:
         try:
@@ -90,7 +90,7 @@ async def hf_model_if_cache(
                 )
                 messages = messages[1:]
                 input_prompt = hf_tokenizer.apply_chat_template(
-                    messages, tokenize=False, add_generation_prompt=True
+                    messages, tokenize=False, add_generation_prompt=True, enable_thinking=True
                 )
         except Exception:
             len_message = len(ori_message)
