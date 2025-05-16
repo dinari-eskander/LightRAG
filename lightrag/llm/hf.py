@@ -39,7 +39,7 @@ def initialize_hf_model(model_name):
         model_name, device_map="auto", trust_remote_code=True
     )
     hf_model = AutoModelForCausalLM.from_pretrained(
-        model_name, device_map="auto", trust_remote_code=True
+        model_name, device_map="auto", trust_remote_code=True, attn_implementation="flash_attention_2"
     )
     if hf_tokenizer.pad_token is None:
         hf_tokenizer.pad_token = hf_tokenizer.eos_token
